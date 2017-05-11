@@ -2,10 +2,6 @@ import Ember from 'ember';
 import { task, timeout } from 'ember-concurrency';
 import config from 'ember-get-config';
 
-//const { get } = Ember;
-
-const { environment } = config;
-
 export default Ember.Service.extend({
 
 	init() {
@@ -81,15 +77,11 @@ export default Ember.Service.extend({
 	},
 
 	timerUpdateEnabled: Ember.computed(function () {
-		//const applicationConfig = Ember.getOwner(this).resolveRegistration('config:environment');
-
-		//return applicationConfig.APP.htmlManifestUpdater.timerUpdateEnabled;
-		return environment.modulePrefix;
+		return config.APP.htmlManifestUpdater.timerUpdateEnabled;
 	}),
 
 	timerHour: Ember.computed(function () {
-		var applicationConfig = this.container.lookup('config:environment');
-		let hour = applicationConfig.APP.htmlManifestUpdater.timerHour;
+		let hour = config.APP.htmlManifestUpdater.timerHour;
 		return (hour >= 0) && (hour <= 23) ? hour : 3;
 	})
 

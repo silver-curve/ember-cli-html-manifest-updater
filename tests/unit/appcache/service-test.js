@@ -13,10 +13,10 @@ test('it exists', function(assert) {
 
 test('service updates at startup if startup-update is enabled', function(assert) {
   let service = this.subject();
-  assert.equal(service.timerUpdateEnabled, false);
+  assert.equal(service.get("timerUpdateEnabled"), true);
 });
 
 test('service does update at startup if startup-update is undefined', function(assert) {
   let service = this.subject();
-  assert.equal(service.timerHour, 12);
+  assert.equal(service.get("timerHour"), 17);
 });
